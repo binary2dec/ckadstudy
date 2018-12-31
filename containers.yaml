@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multicontainer 
+spec:
+
+  restartPolicy: Never
+
+  containers:
+
+  - name: container1 
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 10; done"]
+    image: nginx
+
+  - name: container2
+    command:
+      - ls
+    image: nginx
+  dnsPolicy: ClusterFirst
+status: {}
